@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 Grid 레이아웃</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "main aside"
+                "footer footer";
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: 1fr 300px;
+        }
+
+        header {
+            grid-area: header;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            grid-area: main;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        aside {
+            grid-area: aside;
+            background-color: #ddd;
+            padding: 20px;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* 반응형: 작은 화면에서 사이드 바를 아래로 */
+        @media (max-width: 768px) {
+            body {
+                grid-template-areas:
+                    "header"
+                    "main"
+                    "aside"
+                    "footer";
+                grid-template-rows: auto 1fr auto auto;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>헤더</h1>
+    </header>
+    <main>
+        <h2>메인 콘텐츠</h2>
+        <p>여기에 메인 콘텐츠가 들어갑니다. 화면이 클 때는 사이드 바와 나란히 표시됩니다.</p>
+    </main>
+    <aside>
+        <h2>사이드 바</h2>
+        <p>여기에 사이드 바 콘텐츠가 들어갑니다. 화면이 작을 때는 메인 콘텐츠 아래로 이동합니다.</p>
+    </aside>
+    <footer>
+        <p>푸터</p>
+    </footer>
+</body>
+</html></content>
+<parameter name="filePath">/home/lhg02/skala-basic/css/reponsive.html

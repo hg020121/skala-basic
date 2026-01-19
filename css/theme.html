@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테마 전환 예제</title>
+    <style>
+        /* CSS 변수 선언 (기본 화이트 테마) */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --primary-color: #007bff;
+            --border-color: #ccc;
+            --border-radius: 10px;
+            --font-size: 16px;
+            --padding: 30px;
+            --margin: 20px;
+        }
+
+        /* 다크 테마일 때 적용할 변수 값 재정의 */
+        [data-theme="dark"] {
+            --bg-color: #222222;
+            --text-color: #f0f0f0;
+            --primary-color: #56a5eb;
+            --border-color: #555;
+            --border-radius: 10px;
+            --font-size: 16px;
+            --padding: 30px;
+            --margin: 20px;
+        }
+
+        body {
+            /* 정의한 변수 사용 */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Malgun Gothic', sans-serif;
+            padding: 50px;
+            font-size: var(--font-size);
+            /* 테마 전환 시 부드럽게 바뀌도록 설정 */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            border: 1px solid var(--border-color);
+            padding: var(--padding);
+            border-radius: var(--border-radius);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-top: var(--margin);
+        }
+
+        .controls {
+            margin-bottom: var(--margin);
+        }
+
+        label {
+            margin-right: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="controls">
+            <label>
+                <input type="radio" name="theme" value="white" checked onclick="changeTheme('white')"> 
+                화이트 테마
+            </label>
+            <label>
+                <input type="radio" name="theme" value="dark" onclick="changeTheme('dark')"> 
+                다크 테마
+            </label>
+        </div>
+
+        <h1>테마 전환 예제</h1>
+        <p>CSS 사용자 정의 변수를 활용하여 테마를 전환할 수 있습니다.</p>
+    </div>
+
+    <script>
+        function changeTheme(theme) {
+            // html 태그에 data-theme 속성을 설정하여 CSS 변수 값을 변경
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        }
+    </script>
+</body>
+</html>
