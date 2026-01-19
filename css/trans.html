@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변환과 전환 효과 실습</title>
+    <style>
+        /* 화면 중앙 정렬을 위한 기본 스타일 */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* 1. 상단 박스 스타일 */
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #4CAF50; /* 초기 배경색: 녹색 */
+            color: white;
+            
+            /* 텍스트 정렬 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            /* 라운드 처리 */
+            border-radius: 20px;
+
+            /* ★ 핵심: Transition (전환 효과) 설정 ★ */
+            /* 배경색과 변형(회전)이 일어날 때 0.5초 동안 부드럽게 바뀌도록 설정 */
+            transition: background-color 0.5s ease, transform 0.5s ease;
+            
+            margin-bottom: 50px; /* 버튼과의 간격 */
+        }
+
+        /* 2. Hover 효과: 마우스 올리면 노란색으로 변경 */
+        .box:hover {
+            background-color: #FFC107; /* 변경될 색상: 노란색 */
+            color: #333; /* 글자색을 검정으로 변경 (가독성 위해) */
+            cursor: pointer;
+        }
+
+        /* 3. 회전 상태 클래스 (자바스크립트로 토글) */
+        .rotate-active {
+            transform: rotate(45deg); /* 45도 회전 */
+        }
+
+        /* 하단 버튼 스타일 */
+        .btn {
+            padding: 10px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>변환과 전환 효과 예제</h2>
+
+    <div class="box" id="targetBox">
+        hover me
+    </div>
+
+    <button class="btn" onclick="toggleRotation()">
+        버튼
+    </button>
+    
+    <script>
+        // 버튼 클릭 시 박스 회전 기능을 수행하는 스크립트
+        function toggleRotation() {
+            const box = document.getElementById('targetBox');
+            // 박스에 'rotate-active' 클래스를 넣었다 뺐다(toggle) 함
+            box.classList.toggle('rotate-active');
+        }
+    </script>
+
+</body>
+</html>
