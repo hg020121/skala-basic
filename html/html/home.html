@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이한결 포트폴리오</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* 1. 배경 및 기본 설정 */
+        body {
+            /* 은은한 블루-그레이 그라데이션 배경 */
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            font-family: 'Nanum Gothic', sans-serif;
+            margin: 0;
+            padding: 40px 0; /* 위아래 여백 */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 2. 카드형 레이아웃 컨테이너 */
+        .container {
+            max-width: 1000px; /* 전체 폭 제한 */
+            margin: 0 auto; /* 중앙 정렬 */
+            background-color: #ffffff; /* 흰색 배경 */
+            padding: 50px; /* 내부 여백 */
+            border-radius: 20px; /* 모서리 둥글게 */
+            /* 부드러운 그림자 추가로 입체감 형성 */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+        }
+
+        /* 공통 섹션 스타일 */
+        section {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* 구분선 스타일 변경 */
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+            margin: 20px 0;
+        }
+
+        /* 제목 스타일 */
+        h1, h2 {
+            font-family: 'Do Hyeon', sans-serif;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: #2c3e50; /* 진한 네이비 */
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.05); /* 살짝 그림자 */
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            color: #2c3e50;
+            display: inline-block;
+            /* 제목 아래에 형광펜 밑줄 효과 */
+            background: linear-gradient(to top, #ffeaa7 40%, transparent 40%); 
+        }
+
+        /* 본문 글자 크기 */
+        p, li, dd, td {
+            font-size: 1.2rem; 
+        }
+
+        /* 링크 스타일 */
+        a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #3498db; /* 마우스 올리면 파란색 */
+            font-weight: bold;
+        }
+
+        /* 3. 갤러리 컨테이너 */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 25px; 
+            margin-bottom: 30px;
+        }
+
+        /* 프로필 이미지 */
+        .profile-img { 
+            width: 100%; 
+            max-width: 250px;
+            height: auto; 
+            border-radius: 15px; 
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.15); 
+        }
+
+        /* 4. 콘텐츠 이미지 (마우스 오버 효과 추가) */
+        .content-img { 
+            height: 350px; 
+            width: auto;   
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+
+        /* 마우스를 올렸을 때 붕 뜨는 효과 */
+        .content-img:hover {
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); 
+        }
+
+        /* 가로형 이미지 전용 스타일 */
+        .content-img.landscape {
+            /* 높이 350px 고정이 우선 적용됨 */
+        }
+
+        /* 모바일 화면 대응 */
+        @media (max-width: 768px) {
+            .container { padding: 20px; width: 90%; }
+            .content-img {
+                height: auto;
+                width: 100%;
+                max-width: 400px;
+            }
+            h2 { font-size: 2.5rem; }
+            td { display: block; width: 100% !important; text-align: center; }
+            .profile-td { margin-bottom: 20px; }
+        }
+
+        /* 해시태그 스타일 */
+        .hashtag {
+            font-family: 'Do Hyeon', sans-serif;
+            font-size: 2.0rem;
+            padding: 8px 20px;
+            margin: 8px; 
+            border-radius: 50px; /* 둥근 알약 모양 */
+            display: inline-block;
+            color: #444;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05); 
+        }
+
+        /* 테이블 스타일 */
+        table { margin: 0 auto; border-spacing: 0; }
+        th, td { padding: 12px; }
+
+        /* Skill Set 테이블 디자인 */
+        .skill-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden; 
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        .skill-table th {
+            background-color: #34495e; /* 헤더 색상 */
+            color: white;
+            font-weight: normal;
+        }
+        .skill-table td {
+            border-bottom: 1px solid #eee;
+        }
+        .skill-table tr:last-child td { border-bottom: none; }
+        .skill-table tr:hover { background-color: #f9f9f9; }
+
+        /* 리스트 스타일 */
+        ul { list-style: none; padding: 0; }
+        
+        /* 경험 리스트 아이템 디자인 */
+        .experience-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa; /* 연한 회색 박스 */
+            border-radius: 15px;
+            border-left: 5px solid #3498db; /* 왼쪽에 파란색 포인트 줄 */
+            text-align: left;
+            transition: transform 0.2s;
+        }
+        .experience-item:hover {
+            transform: translateX(10px); 
+            background-color: #eef2f3;
+        }
+
+        .detail-text {
+            font-size: 1.05rem; 
+            color: #666; 
+            margin-top: 8px;
+            display: block; 
+            font-weight: normal;
+        }
+        
+        /* 형광펜 효과 스타일 */
+        mark {
+            background: linear-gradient(to top, #ff9ff3 50%, transparent 50%);
+            background-color: transparent;
+            font-weight: bold;
+            padding: 0 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <table style="width: 100%;">
+                <tr>
+                    <td class="profile-td" style="width: 280px; vertical-align: top;">
+                        <img src="이한결_취업사진.jpg" alt="이한결 취업사진" class="profile-img"> 
+                    </td>
+                    
+                    <td style="vertical-align: middle; text-align: left;">
+                        <h1 style="font-size: 3.5rem; margin-bottom: 10px;">LEE HANGYEOL</h1> 
+                        <h2 style="font-size: 2.2rem; margin-top: 0; color: #555; background: none;">이한결</h2>
+                        
+                        <dl style="margin-top: 20px;">
+                            <dt style="color:#888; font-size:0.9rem;">BIRTH</dt>
+                            <dd style="font-weight:bold; margin-bottom:15px;">2002.01.21</dd>
+                            
+                            <dt style="color:#888; font-size:0.9rem;">CONTACT</dt>
+                            <dd>T. 010-6364-0397</dd>
+                            <dd>E. <a href="mailto:hg020121@gmail.com">hg020121@gmail.com</a></dd> 
+                            <dd>Insta. <a href="https://instagram.com/lhggggg__" target="_blank">@lhggggg__</a></dd>
+                            
+                            <div style="margin-top: 15px;"></div>
+                            <dt style="color:#888; font-size:0.9rem;">EDUCATION</dt>
+                            <dd>홍익대학교 신소재화공시스템공학부<br>신소재공학전공</dd>
+                        </dl>
+                    </td>
+                </tr>
+            </table>
+        </header>
+
+        <hr> 
+
+        <section>
+            <h2>ABOUT ME</h2>
+            <div class="gallery-container">
+                <img src="이한결_증명사진.jpg" alt="증명사진" class="content-img">
+                <img src="KakaoTalk_20260116_164938171_03.jpg" alt="입학관리본부" class="content-img landscape">
+                <img src="KakaoTalk_20260116_164938171_08.jpg" alt="반도체패키징 단체사진" class="content-img">
+                <img src="KakaoTalk_20260116_164938171_07.jpg" alt="졸논플젝" class="content-img">
+            </div>
+            <p style="margin-top: 30px;">
+                <span class="hashtag" style="background-color: #ffd700;">#ESTJ</span>
+                <span class="hashtag" style="background-color: #add8e6;">#POSITIVE</span>
+                <span class="hashtag" style="background-color: #90ee90;">#COMMUNICATION</span>
+                <span class="hashtag" style="background-color: #ffb7b2;">#PASSIONATE</span>
+            </p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>MY FAVORITE</h2>
+            <div class="gallery-container">
+                <img src="KakaoTalk_20260116_162200382_03.jpg" alt="두쫀쿠" class="content-img">
+                <img src="KakaoTalk_20260116_165038629.jpg" alt="전시회" class="content-img">
+                <img src="KakaoTalk_20260116_165038629_01.jpg" alt="전시회 추가" class="content-img">
+            </div>
+            <p style="margin-top: 20px;">
+                <span class="hashtag" style="background-color: #f1f2f6;">#두쫀쿠</span>
+                <span class="hashtag" style="background-color: #f1f2f6;">#전시</span>
+                <span class="hashtag" style="background-color: #f1f2f6;">#넷플릭스</span>
+            </p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>EXPERIENCE</h2>
+            <p style="margin-bottom: 30px;">
+                <span class="hashtag" style="background-color: #dfe6e9;">#SEMICONDUCTOR</span>
+                <span class="hashtag" style="background-color: #dfe6e9;">#HBM</span>
+            </p>
+            
+            <div class="gallery-container" style="margin-bottom: 15px;">
+                <img src="수료증_page-0001.jpg" alt="수료증 모음" class="content-img landscape">
+            </div>
+
+            <div class="gallery-container">
+                <img src="KakaoTalk_20260116_164938171_05.jpg" alt="공정실습 방진복" class="content-img">
+                <img src="포항공대 동계연구장학생 수료증_page-0001.jpg" alt="포공 사진" class="content-img">
+                <img src="한국반도체아카데미_원장상_이한결_page-0001.jpg" alt="패키징 상장" class="content-img">
+            </div>
+
+            <ul style="max-width: 850px; margin: 30px auto 0 auto;">
+                <li class="experience-item">
+                    <strong>졸업논문 프로젝트 수행</strong>
+                    <span class="detail-text">
+                        Quantitative Evaluation of Resistivity Size Effect in Co3Ti Thin Films<br>
+                        (Co3Ti 박막 두께에 따른 비저항 변화의 정량적인 평가)
+                    </span>
+                </li>
+                <li class="experience-item">
+                    <strong>포항공대 동계연구장학생</strong>
+                    <span class="detail-text">
+                        Advanced Thin Films & Oxide Materials (ATOM) Laboratory<br>
+                        첨단 박막 및 산화물 소재 연구실 (한현 교수)
+                    </span>
+                </li>
+                <li class="experience-item">
+                    <strong>공정실습 (서울대, 포항공대, 한양대, 인하대)</strong>
+                </li>
+                <li class="experience-item">
+                    <strong>반도체 패키지 개발 및 분석 전문가 양성 과정 <mark>원장상 수상</mark></strong>
+                    <span class="detail-text">
+                        Optimization of Electro-Thermal Properties of a Power Module<br>
+                        Using Clip Bonding and DSC(Double-Side Cooling) structure
+                    </span>
+                </li> 
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>#AI</h2>
+            
+            <div class="gallery-container">
+                <img src="AI드림캠프 수료증.jpg" alt="SK AI 드림캠프 수료증" class="content-img">
+                <img src="프레젠테이션1_page-0001.jpg" alt="SKALA" class="content-img">
+            </div>
+
+            <ul style="max-width: 850px; margin: 30px auto 0 auto;">
+                <li class="experience-item" style="border-left-color: #e74c3c;">
+                    <strong>SK MYSUNI AI DREAM CAMP 수료</strong>
+                </li>
+                <li class="experience-item" style="border-left-color: #e74c3c;">
+                    <strong>SKALA AI 과정 ing</strong>
+                </li> 
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Skill Set</h2>
+            <table class="skill-table">
+                <thead> 
+                    <tr style="height: 50px;">
+                        <th style="width: 30%; font-size: 1.4rem;">Category</th>
+                        <th style="font-size: 1.4rem;">Items</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <tr style="height: 60px;">
+                        <td style="text-align: center; font-weight: bold; background-color: #f4f6f7;">Languages</td>
+                        <td style="padding-left: 20px;">Python, HTML</td>
+                    </tr>
+                    <tr style="height: 60px;">
+                        <td style="text-align: center; font-weight: bold; background-color: #f4f6f7;">AI Framework</td>
+                        <td style="padding-left: 20px;">Scikit-learn, Pytorch</td>
+                    </tr>
+                    <tr style="height: 60px;">
+                        <td style="text-align: center; font-weight: bold; background-color: #f4f6f7;">Engineering Tools</td>
+                        <td style="padding-left: 20px;">Ansys (Icepak, Q3D), SpaceClaim, AutoCAD</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer style="text-align: center; margin-top: 60px; padding: 30px; color: #999; font-size: 1.0rem; border-top: 1px dashed #ddd;">
+            <p>Copyright 2026. Lee Hangyeol All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

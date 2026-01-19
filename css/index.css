@@ -1,0 +1,61 @@
+/* 스크롤을 만들기 위해 화면 높이를 아주 크게 설정 */
+body {
+    height: 3000px;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* 1. 상단 고정 메뉴 (Fixed) */
+/* 화면 스크롤과 상관없이 항상 화면 맨 위에 고정됨 */
+.fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: royalblue; /* 파란색 */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+    /* ★ 실습 포인트 ★ */
+    /* 현재: 100 (Sticky보다 큼 -> 파란색이 위로 덮음) */
+    /* 변경: 5로 바꾸면 Sticky(10)보다 작아져서 파란색이 밑으로 깔림 */
+    z-index: 100;
+}
+
+/* 2. 스크롤 따라오는 배너 (Sticky) */
+/* 처음엔 아래에 있다가, 스크롤 올려서 천장에 닿으면 붙음 */
+.sticky-banner {
+    position: sticky;
+    top: 0; /* 천장에 닿으면 고정 */
+    
+    width: 100%;
+    height: 80px;
+    background-color: orange; /* 주황색 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    
+    /* Fixed 메뉴와 겹치는 상황을 만들기 위해 위쪽 여백 줌 */
+    margin-top: 150px; 
+    border-bottom: 2px solid black;
+
+    /* ★ Sticky의 z-index는 10입니다 */
+    z-index: 10;
+}
+
+/* 3. 내용을 채우기 위한 박스들 */
+.content {
+    padding: 20px;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
