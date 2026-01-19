@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid + Flexbox Layout</title>
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            padding: 50px;
+        }
+
+        /* 1. 전체 레이아웃 (Grid 활용) */
+        /* 검색 영역과 목록 영역을 세로로 배치하기 위해 Grid 사용 */
+        .container {
+            width: 800px;           /* 전체 너비 고정 (필요시 %로 변경 가능) */
+            margin: 0 auto;         /* 화면 중앙 정렬 */
+            border: 1px solid #ccc; /* 외곽선 */
+            padding: 20px;
+            
+            display: grid;          /* Grid 선언 */
+            grid-template-rows: auto 1fr; /* 첫 줄은 내용만큼, 두 번째 줄은 나머지 */
+            gap: 20px;              /* 위아래 요소 간격 20px */
+        }
+
+        /* 2. 검색 영역 (Flexbox 활용) */
+        /* 입력창과 버튼을 가로로 나란히 배치하기 위해 Flex 사용 */
+        .search-area {
+            display: flex;          /* Flex 선언 */
+            gap: 10px;              /* 입력창과 버튼 사이 간격 */
+        }
+
+        .search-input {
+            flex: 1;                /* 남은 공간을 입력창이 모두 차지 */
+            padding: 10px;
+            border: 1px solid #999;
+        }
+
+        .search-btn {
+            width: 80px;            /* 버튼 크기 고정 */
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #999;
+            cursor: pointer;
+        }
+
+        /* 3. 목록형 데이터 영역 스타일 */
+        .content-area {
+            border: 1px solid #ddd;
+            padding: 30px;
+            min-height: 150px;      /* 최소 높이 지정 */
+        }
+
+        .content-area h2 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .content-area hr {
+            border: 0;
+            border-top: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="search-area">
+            <input type="text" class="search-input" placeholder="키워드 입력">
+            <button class="search-btn">검색</button>
+        </div>
+
+        <div class="content-area">
+            <h2>목록형 데이터 영역</h2>
+            <hr>
+        </div>
+
+    </div>
+
+</body>
+</html>
