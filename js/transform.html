@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>홍길동 변신</title>
+</head>
+<body>
+    <script>
+
+        // 사용자로부터 변신 대상을 입력받음
+        const message = prompt("변신 대상을 입력하세요:");
+        
+        // 함수 호출
+        transform(message);
+
+        const transform = (message) => {
+        // 입력받은 문자열의 길이가 0보다 큰지 확인
+        if (message && message.length > 0) {
+            document.write(`홍길동이 [${message}](으)로 변신하였습니다.`);
+        } else {
+            document.write("연기처럼 사라졌습니다.");
+        }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국어 판단</title>
+</head>
+<body>
+    <script>
+        function isKorean(tex) {
+            const koreanRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+            return koreanRegex.test(text);
+        }
+
+        const input = prompt("문장을 입력하세요:");
+        if (input !== null) {
+            if (isKorean(input)) {
+                document.write("입력한 문장: [$(input)]에 한국어가 포함되어 있습니다.");
+            } else {
+                document.write("입력한 문장: [$(input)]에 한국어가 포함되어 있지 않습니다.");
+            }
+        }
+    </script>
+</body>
+</html>

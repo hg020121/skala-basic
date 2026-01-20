@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍길동의 식량 배분</title>
+</head>
+<body>
+    <script>
+        const foods = ["쌀", "보리", "콩", "감자", "양파", "마늘", "배추", "무", "고구마", "호박"];
+        const poors = ["철수", "영희", "민수"];
+
+        // 1. 각 사람마다 받은 물건을 객체 형태로 담을 results 배열 초기화
+        const results = poors.map(name => ({
+            name: name,
+            items: []
+        }));
+
+        // 2. 식량(foods) 항목을 순서대로 하나씩 분배 (나머지 연산자 % 활용)
+        foods.forEach((food, index) => {
+            const poorIndex = index % poors.length; // 0, 1, 2가 반복됨
+            results[poorIndex].items.push(food);
+        });
+
+        // 3. console.table로 데이터 구조 확인
+        console.table(results);
+
+        // 4. document.write()와 <table> 태그를 이용해 화면에 출력
+        let tableHtml = '<table border="1" style="border-collapse: collapse; width: 300px; text-align: center;">';
+        tableHtml += '<tr><th>이름</th><th>식량</th></tr>';
+
+        results.forEach(person => {
+            tableHtml += `<tr>
+                <td>${person.name}</td>
+                <td>${person.items.join(', ')}</td>
+            </tr>`;
+        });
+
+        tableHtml += '</table>';
+
+        document.write(tableHtml);
+    </script>
+</body>
+</html>
