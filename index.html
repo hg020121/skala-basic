@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Mode</title>
+</head>
+<body>
+    <h1>Document Object Mode </h1>
+    <input id="inputField">
+    <button id ="click Button">클릭</button>
+    <div id="outputField"></div>
+
+    <script>
+        const inputField = document.getElementById('inputField');
+        const clickButton = document.getElementById('click Button');
+        const outputField = document.getElementById('outputField');
+        
+        console.log(inputField, clickButton, outputField);
+
+        const newParagraph = document.createElement('p');
+        outputField.appendChild(newParagraph);
+
+        function doClick() {
+            const userInput = inputField.value;
+            console.log(userInput);
+            
+            newParagraph.innerHTML = userInput;
+        }
+
+        clickButton.addEventListener('dblclick', doClick);
+    </script>
+
+</body>
+</html>
