@@ -1,6 +1,7 @@
 export function isEmpty(value) {
     // 1. null 또는 undefined 체크
-    if (value === null || value === undefined) return true;
+    if (value === null || value === undefined)
+        return true;
 
     // 2. 문자열 체크 (공백 제외)
     if (typeof value === 'string') {
